@@ -1,0 +1,45 @@
+.search-area {
+  .add-patient-btn {
+    border-radius: $border-radius;
+    border-color: #0c78be;
+    border-width: 2px;
+    color: $dark-blue;
+
+    .fa-user-plus {
+      color: 	$dark-blue;
+      font-size: 22px;
+      vertical-align: top;
+    }
+
+    span {
+      vertical-align: top;
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: $dark-blue;
+      border-color: $dark-blue;
+
+      .fa-user-plus {
+        color: #fff;
+      }
+    }
+  }
+
+  .search-bar {
+    color: #bbb;
+    font-size: 14px;
+
+    .form-control {
+      background-color: #ececec;
+      border-radius: $border-radius;
+      width: 18.25rem;
+      font-size: 13px;
+      padding: 1.25rem 10px 1.25rem 2rem;
+    }
+
+    .fa-search {
+      left: 12px;
+    }
+  }
+}

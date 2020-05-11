@@ -4,11 +4,15 @@
     <title>Wellbe | Patient Tracker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'styles' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'react' %>
   </head>
   <body>
-    <%= render 'errors' %>
-    <%= yield %>
+    <%= render 'partials/errors' %>
+    <%= render 'partials/header' %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>

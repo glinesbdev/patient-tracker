@@ -1,0 +1,16 @@
+.filter-bar {
+  background-color: #dfe0e0;
+  border-bottom: 2px solid #92b3cb;
+
+  .btn-group {
+    .btn {
+      font-size: 12px;
+      color: $dark-blue;
+
+      &.active {
+        background-color: #024266 !important;
+        color: #fff !important;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+.small-text {
+  font-size: 12px;
+}
+
+.text-weight-light {
+  font-weight: 300;
+}
+
+.patient-status {
+  color: $dark-blue;
+
+  &.completed {
+    color: $success;
+  }
+
+  &.archived {
+    color: $danger;
+  }
+}
+
+.follow-up {
+  background-color: #f4f4f4;
+  color: $dark-blue;
+  user-select: none;
+
+  .custom-checkbox-label {
+    .follow-up-checkbox {
+      opacity: 0;
+      cursor: pointer;
+
+      &:checked ~ .custom-checkbox {
+        background-color: $success;
+        border-radius: 50%;
+        border: 2px solid $success;
+
+        &:before {
+          font-family: "Font Awesome 5 Free";
+          font-size: 12px;
+          content: "\f00c";
+          color: #fff;
+          margin-left: 1.5px;
+          vertical-align: super;
+        }
+      }
+    }
+
+    .custom-checkbox {
+      height: 20px;
+      width: 20px;
+      background-color: transparent;
+      border-radius: 5px;
+      transition: all 0.3s ease-out;
+      border-radius: 50%;
+      border: 2px solid $dark-blue;
+    }
+  }
+
+  .checkbox-checked {
+    color: $success;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,38 @@
+.patient-form {
+  .form-group {
+    label {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: $dark-blue;
+    }
+
+    .form-control {
+      border: 0;
+      border-bottom: 1px solid $dark-blue;
+      border-radius: 0;
+
+      &:focus {
+        border-bottom: 1px solid $dark-blue;
+        box-shadow: none;
+      }
+
+      &:read-only, &:disabled {
+        color: $text-disabled;
+        background-color: unset;
+        padding: 0;
+      }
+    }
+  }
+
+  &.existing {
+    label {
+      margin-bottom: 0;
+    }
+  }
+
+  .fa-pencil-alt {
+    margin-left: 0.25rem;
+    font-size: 12px;
+    color: $dark-blue;
+  }
+}

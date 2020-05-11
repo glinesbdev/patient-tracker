@@ -1,0 +1,28 @@
+@import '../src/stylesheets/variables';
+
+@import '~reset.scss';
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+
+  &.modal-open {
+    overflow: unset;
+    padding: 0 !important;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  .min-vh-75 {
+    min-height: 75vh;
+  }
+}
+
+@import '../src/stylesheets/header';
+@import '../src/stylesheets/home/home';
+@import '../src/stylesheets/patients/patients';

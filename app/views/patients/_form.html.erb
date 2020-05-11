@@ -1,0 +1,52 @@
+<%= form_with(model: patient, remote: true, html: { class: 'form patient-form' }) do |form| %>
+  <% if patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+      <ul>
+        <% patient.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-row">
+    <div class="form-group col">
+      <%= form.label :name %>
+      <%= form.text_field :first_name, class: 'form-control', placeholder: 'First' %>
+    </div>
+    <div class="form-group col">
+      <label class="invisible">nothing</label>
+      <%= form.text_field :middle_initial, class: 'form-control', placeholder: 'MI', maxlength: 1 %>
+    </div>
+    <div class="form-group col">
+      <label class="invisible">nothing</label>
+      <%= form.text_field :last_name, class: 'form-control', placeholder: 'Last' %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-4">
+      <%= form.label :date_of_birth %>
+      <%= form.text_field :date_of_birth, class: 'form-control', placeholder: '00/00/0000' %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <%= form.label :phone_number %>
+      <%= form.phone_field :phone_number, class: 'form-control', placeholder: '721-908-8090' %>
+    </div>
+    <div class="form-group col">
+      <%= form.label :email %>
+      <%= form.email_field :email, class: 'form-control', placeholder: 'example@gmail.com' %>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col">
+      <%= form.label :doctor %>
+      <%= form.select :doctors_name, doctors.each_with_index { |d, i| [d, i] }, { prompt: 'Select' }, { class: 'form-control' } %>
+    </div>
+    <div class="form-group col">
+      <%= form.label :condition %>
+      <%= form.phone_field :condition, class: 'form-control', placeholder: 'Type here' %>
+    </div>
+  </div>
+<% end %>

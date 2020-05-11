@@ -1,0 +1,22 @@
+.archive-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -150px;
+  z-index: 9999;
+  max-width: 34rem;
+  border: 1px solid $dark-blue;
+  border-radius: 5px;
+  background-color: #fff;
+
+  .modal-title {
+    border-radius: 5px;
+    box-shadow: -1px 2px 3px 0px #bbb;
+    padding: 0.5em;
+  }
+
+  .modal-body {
+    padding: 0 1em 1em 1em;
+  }
+}

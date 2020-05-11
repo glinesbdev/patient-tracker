@@ -1,0 +1,17 @@
+table {
+  font-size: 13px;
+
+  .contact-field {
+    width: 25%;;
+    background-color: #f8f8f7;
+  }
+
+  .pl-6 {
+    padding-left: 5rem;
+  }
+
+  .patient-name {
+    color: $primary;
+    cursor: pointer;
+  }
+}

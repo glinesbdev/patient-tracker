@@ -1,0 +1,39 @@
+.patient-modal {
+  padding: 0 !important;
+  right: 0;
+
+  .modal-dialog {
+    height: 100%;
+    right: 0;
+    min-width: 35%;
+    max-width: 35%;
+    margin: 0;
+    margin-left: auto;
+
+    .modal-content {
+      height: 100%;
+
+      .modal-header {
+        .modal-title {
+          color: $success;
+        }
+      }
+
+      .modal-body {
+        .details-heading {
+          top: -11px;
+          left: 0;
+          color: #0b4264;
+          font-size: 14px;
+          background-color: white;
+          padding-left: 1rem;
+        }
+
+        button[class*="btn-outline-"] {
+          border-radius: $border-radius;
+          border-width: 2px;
+        }
+      }
+    }
+  }
+}
