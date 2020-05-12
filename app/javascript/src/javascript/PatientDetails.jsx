@@ -68,14 +68,14 @@ const PatientModal = (props) => {
   };
 
   const handleEdit = (e) => {
-    const input = e.target.parentElement.nextElementSibling;
-    input.click();
+    e.target.parentElement.nextElementSibling.click();
   };
 
   const handleInputClick = (e) => {
     const input = e.target;
 
     input.readOnly = false;
+    input.disabled = false;
     input.focus();
   };
 
@@ -103,7 +103,12 @@ const PatientModal = (props) => {
         dispatch(updateCurrentPatients(data));
         dispatch(updatePatient(data));
       })
-      .finally(() => input.readOnly = true)
+      .finally(() => {
+        if (input.localName !== 'select') {
+          input.readOnly = true;
+          input.disabled = true;
+        }
+      })
       .catch(error => console.error(error));
   };
 
@@ -156,7 +161,7 @@ const PatientModal = (props) => {
       {!patient.archived_at &&
         <div className="follow-up d-flex justify-content-end align-content-center w-100 p-3">
           <form className="form form-inline">
-            <label className="custom-checkbox-label mr-2">
+            <label className="custom-checkbox-label mr-2 d-flex">
               <input ref={checkboxRef} type="checkbox" name="followUp" className="follow-up-checkbox" />
               <span onClick={handleCheckbox} className="custom-checkbox"></span>
             </label>
@@ -185,18 +190,18 @@ const PatientModal = (props) => {
           <div className="form-group col">
             <label htmlFor="patient[date_of_birth]">Date of Birth</label>
             <span>
-              <i className="fas fa-pencil-alt" data-attr="dateOfBirth" onClick={handleEdit}></i>
+              <i className="fas fa-pencil-alt" data-attr="date_of_birth" onClick={handleEdit}></i>
             </span>
-            <input type="text" id="patient[date_of_birth]" name="patient[date_of_birth]" data-attr="dateOfBirth" className="form-control border-bottom-0" readOnly onClick={handleInputClick} onChange={handleChange} onBlur={handleBlur} value={patient.date_of_birth} />
+            <input type="text" id="patient[date_of_birth]" name="patient[date_of_birth]" data-attr="date_of_birth" className="form-control border-bottom-0" readOnly onClick={handleInputClick} onChange={handleChange} onBlur={handleBlur} value={patient.date_of_birth} />
           </div>
         </div>
         <div className="form-row">
           <div className="form-group col">
             <label htmlFor="patient[phone_number]">Phone</label>
             <span>
-              <i className="fas fa-pencil-alt" data-attr="phoneNumber" onClick={handleEdit}></i>
+              <i className="fas fa-pencil-alt" data-attr="phone_number" onClick={handleEdit}></i>
             </span>
-            <input type="tel" id="patient[phone_number]" name="patient[phone_number]" data-attr="phoneNumber" className="form-control border-bottom-0" readOnly onClick={handleInputClick} onChange={handleChange} onBlur={handleBlur} value={patient.phone_number ? patient.phone_number : ''} />
+            <input type="tel" id="patient[phone_number]" name="patient[phone_number]" data-attr="phone_number" className="form-control border-bottom-0" readOnly onClick={handleInputClick} onChange={handleChange} onBlur={handleBlur} value={patient.phone_number ? patient.phone_number : ''} />
           </div>
           <div className="form-group col">
             <label htmlFor="patient[email]">Email</label>
@@ -210,9 +215,9 @@ const PatientModal = (props) => {
           <div className="form-group col">
             <label htmlFor="patient[doctors_name]">Doctor</label>
             <span>
-              <i className="fas fa-pencil-alt" data-attr="doctorsName" onClick={handleEdit}></i>
+              <i className="fas fa-pencil-alt" data-attr="doctors_name" onClick={handleEdit}></i>
             </span>
-            <select type="text" id="patient[doctors_name]" name="patient[doctors_name]" data-attr="doctorsName" disabled className="form-control" onClick={handleInputClick} onChange={handleChange} onBlur={handleBlur} value={patient.doctors_name}>
+            <select type="text" id="patient[doctors_name]" name="patient[doctors_name]" data-attr="doctors_name" className="form-control" onClick={handleInputClick} onChange={handleChange} onBlur={handleBlur} value={patient.doctors_name}>
               <option value="">Select</option>
               {doctors.map((doc, index) => (
                 <option key={index} value={doc}>{doc}</option>

@@ -33,3 +33,9 @@ The test suite is RSpec. To run it:
 ```
 bundle exec rspec
 ```
+
+## Known Bugs
+
+* Pagination doesn't fully update properly with buttons and count.
+* Some things on mobile look odd.
+* Form validations are happening on the server but not displayed in the React forms.
