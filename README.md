@@ -1,24 +1,35 @@
-# README
+# Worklist - Patient Tracker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application lets a user add a patients to a list and interact with them by:
 
-Things you may want to cover:
+* Editing information like name, date of birth, etc.
+* Completing follow ups
+* Archiving patients
 
-* Ruby version
+## Running
 
-* System dependencies
+This application uses Rails 6 and React so you will need to start both Rails and the webpack dev server in two terminal sessions:
 
-* Configuration
+```
+bundle exec rails server
+```
 
-* Database creation
+```
+./bin/webpack-dev-server
+```
 
-* Database initialization
+If you have [Foreman](https://github.com/ddollar/foreman) installed, you can run both of them together with:
 
-* How to run the test suite
+```
+npm start
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+> The above NPM script runs foreman start -f Procfile.dev
 
-* Deployment instructions
+## Tests
 
-* ...
+The test suite is RSpec. To run it:
+
+```
+bundle exec rspec
+```
