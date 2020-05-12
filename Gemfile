@@ -27,17 +27,17 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem 'devise'
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'jazz_fingers'
+  gem 'rspec-rails'
 end
 
 group :development do
-  gem 'faker'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -48,8 +48,7 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
-  gem 'minitest-rails-capybara'
+  gem 'capybara'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'

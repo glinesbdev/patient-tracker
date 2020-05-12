@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const patientFilterEl = document.querySelector('#patientFilterEl');
   const patientModalEl = document.querySelector('#patientModalEl');
 
+
   if (patientTableEl) {
     ReactDOM.render(
       <Provider store={store}>

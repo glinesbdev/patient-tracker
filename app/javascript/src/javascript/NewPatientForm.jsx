@@ -80,7 +80,7 @@ const NewPatientForm = () => {
           </div>
           <div className="form-group col">
             <label htmlFor="email">Email</label>
-            <input type="email" name="email" className="form-control" placeholder="example@gmail.com" onChange={handleInput} />
+            <input type="email" name="patient[email]" className="form-control" placeholder="example@gmail.com" onChange={handleInput} />
           </div>
         </div>
         <div className="form-row">

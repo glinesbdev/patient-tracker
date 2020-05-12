@@ -40,7 +40,7 @@ const ArchiveModal = () => {
 
         <div className="d-flex justify-content-end">
           <button type="button" className="btn btn-secondary" onClick={cancelArchive}>Cancel</button>
-          <button type="button" className="btn btn-danger ml-2" data-dismiss="modal" onClick={handleArchive}>Archive</button>
+          <button type="button" className="btn btn-danger ml-2" data-dismiss="modal" data-test="realArchiveBtn" onClick={handleArchive}>Archive</button>
         </div>
       </div>
     </div>
