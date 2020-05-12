@@ -90,7 +90,7 @@ class PatientsController < ApplicationController
         name = params[:name].split(',')
         updated_attrs[:first_name] = name[1].strip
         updated_attrs[:last_name] = name[0].strip
-        updated_attrs[:middle_initial] = name[2].strip
+        updated_attrs[:middle_initial] = name[2]
       end
 
       updated_attrs[:completed_at] = Time.now if params[:follow_up_completed]

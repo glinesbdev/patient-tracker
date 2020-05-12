@@ -28,14 +28,16 @@ npm start
 
 ## Tests
 
-The test suite is RSpec. To run it:
+The test suite is RSpec. The javascript packs will need to be compiled as well. To run it:
 
 ```
-bundle exec rspec
+RAILS_ENV=test bundle exec rake webpacker:compile && bundle exec rspec
 ```
 
 ## Known Bugs
 
+* There are some known issues around the chrome webdriver and Capybara that make some tests fail inconsistently.
+  * Specifically the `it 'can edit the patient'` test
 * Pagination doesn't fully update properly with buttons and count.
 * Some things on mobile look odd.
 * Form validations are happening on the server but not displayed in the React forms.

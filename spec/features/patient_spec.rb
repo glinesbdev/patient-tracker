@@ -10,7 +10,7 @@ RSpec.describe 'Patient', type: :feature, js: true do
   describe 'index page' do
     it 'shows the header' do
       visit root_path
-      expect(page).to have_content('Worklist')
+      expect(page).to have_text(:all, 'Worklist')
     end
 
     it 'has an Add Patient button' do
@@ -33,17 +33,17 @@ RSpec.describe 'Patient', type: :feature, js: true do
 
       click_button 'Add'
 
-      expect(page).to have_content('Doe, Jon, D')
+      expect(page).to have_text(:all, 'Doe, Jon, D')
     end
 
     it 'displays patient information' do
       visit root_path
       find('.patient-name', text: 'Jones, Peggy, K').click
 
-      expect(page).to have_content('Dr. Willard Mccurtis')
-      expect(page).to have_content('Bronchitis')
-      expect(page).to have_content('Pending')
-      expect(page).to have_content('Patient added: less than a minute ago')
+      expect(page).to have_text(:all, 'Dr. Willard Mccurtis')
+      expect(page).to have_text(:all, 'Bronchitis')
+      expect(page).to have_text(:all, 'Pending')
+      expect(page).to have_text(:all, 'Patient added: less than a minute ago')
     end
 
     it 'can edit the patient' do
@@ -56,10 +56,8 @@ RSpec.describe 'Patient', type: :feature, js: true do
       find('input[name="patient[condition]"]').click
       fill_in name: 'patient[condition]', with: 'Tonsillitis'
 
-      find('.modal-header').click
-
-      expect(page).to have_content('Figgins, Barry, J')
-      expect(page).to have_content('Tonsillitis')
+      expect(page).to have_text(:all, 'Figgins, Barry, J')
+      expect(page).to have_text(:all, 'Tonsillitis')
     end
 
     it 'can archive the patient' do
@@ -77,8 +75,8 @@ RSpec.describe 'Patient', type: :feature, js: true do
       find('.patient-name', text: 'Jones, Peggy, K').click
       find('.custom-checkbox').click
 
-      expect(page).to have_content('Completed')
-      expect(page).to have_content('Follow up completed: less than a minute ago')
+      expect(page).to have_text(:all, 'Completed')
+      expect(page).to have_text(:all, 'Follow up completed: less than a minute ago')
     end
 
     describe 'archiving and completing' do
@@ -91,16 +89,31 @@ RSpec.describe 'Patient', type: :feature, js: true do
         visit root_path
         click_on 'Archived'
 
-        expect(page).to have_content('Bob')
-        expect(page).to have_content('George')
+        expect(page).to have_text(:all, 'Bob')
+        expect(page).to have_text(:all, 'George')
       end
     end
 
-    it 'shows all patients' do
-      visit root_path
-      click_on 'All'
+    describe 'all patients' do
+      before do
+        create(:patient, archived_at: 2.days.ago, first_name: 'Bob')
+        create(:patient, archived_at: 10.days.ago, first_name: 'Benney')
+        create(:patient, follow_up_completed: true, completed_at: 17.minutes.ago, first_name: 'Patricia')
+        create(:patient, follow_up_completed: true, completed_at: 5.hours.ago, first_name: 'Lucas')
+        create(:patient, follow_up_completed: true, completed_at: 19.days.ago, first_name: 'George')
+      end
 
-      expect(page).to have_content('Jones, Peggy, K')
+      it 'shows all patients' do
+        visit root_path
+        click_on 'All'
+
+        expect(page).to have_text(:all, 'Jones, Peggy, K')
+        expect(page).to have_text(:all, 'Jones, Bob, K')
+        expect(page).to have_text(:all, 'Jones, Benney, K')
+        expect(page).to have_text(:all, 'Jones, Patricia, K')
+        expect(page).to have_text(:all, 'Jones, Lucas, K')
+        expect(page).to have_text(:all, 'Jones, George, K')
+      end
     end
   end
 end
